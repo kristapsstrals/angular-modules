@@ -1,7 +1,9 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { Breakpoints, BreakpointObserver } from "@angular/cdk/layout";
 import { map, shareReplay } from "rxjs/operators";
+import { AuthService } from "./services/auth.service";
+import { FormControl } from "@angular/forms";
 
 @Component({
   selector: "app-admin",
@@ -16,5 +18,39 @@ export class AdminComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  public loading = true;
+  loggedIn: boolean = false;
+  user: any;
+
+  email = new FormControl("");
+  password = new FormControl("");
+
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private authService: AuthService
+  ) {}
+
+  ngOnInit(): void {
+    this.authService.user.subscribe(user => {
+      this.loading = false;
+
+      if (!user) {
+        console.log("Not logged in");
+        this.loggedIn = false;
+        return;
+      }
+
+      this.loggedIn = true;
+      this.user = user;
+      console.log(user);
+    });
+  }
+
+  login() {
+    this.authService.login(this.email.value, this.password.value);
+  }
+
+  logout() {
+    this.authService.logout();
+  }
 }

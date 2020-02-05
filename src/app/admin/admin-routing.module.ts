@@ -3,12 +3,16 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { AdminComponent } from "./admin.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
+import { TableComponent } from "./pages/table/table.component";
 
 const routes: Routes = [
   {
     path: "",
     component: AdminComponent,
-    children: [{ path: "", component: DashboardComponent }]
+    children: [
+      { path: "", component: DashboardComponent },
+      { path: "table", component: TableComponent }
+    ]
   }
 ];
 

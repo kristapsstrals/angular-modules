@@ -1,33 +1,53 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav
-    #drawer
-    class="sidenav"
-    fixedInViewport
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
-  >
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/admin">Dashboard</a>
-      <a mat-list-item routerLink="/table">Table</a>
-      <a mat-list-item routerLink="/profile">Profile</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async"
-      >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>choir-coal</span>
-    </mat-toolbar>
+<ng-container *ngIf="!loggedIn; else elseTemplate">
+  <div class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" type="email" [formControl]="email" />
+    </mat-form-field>
 
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        type="password"
+        placeholder="Password"
+        [formControl]="password"
+      />
+    </mat-form-field>
+  </div>
+  <button mat-raised-button (click)="login()">Login</button>
+</ng-container>
+<ng-template #elseTemplate>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+      #drawer
+      class="sidenav"
+      fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false"
+    >
+      <mat-toolbar>Menu</mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/admin">Dashboard</a>
+        <a mat-list-item routerLink="/admin/table">Table</a>
+        <a mat-list-item routerLink="/admin/profile">Profile</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async"
+        >
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span>choir-coal</span>
+        <button mat-raised-button (click)="logout()">Logout</button>
+      </mat-toolbar>
+
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</ng-template>
