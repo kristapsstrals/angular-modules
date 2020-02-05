@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyCT4VBuyhOOiXm4enfmywXtojyqQglqDkM",
-    authDomain: "korisogle.firebaseapp.com",
-    databaseURL: "https://korisogle.firebaseio.com",
-    projectId: "korisogle",
-    storageBucket: "korisogle.appspot.com",
-    messagingSenderId: "227656371739",
-    appId: "1:227656371739:web:770a045477213c2d"
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: ""
   }
 };
 
