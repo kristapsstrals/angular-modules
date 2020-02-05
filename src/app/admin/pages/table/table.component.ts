@@ -23,12 +23,14 @@ export class TableComponent implements AfterViewInit, OnInit {
 
   items: Observable<any[]>;
 
-  constructor(service: MusicService) {
-    this.items = service.getAllMusic();
-  }
+  constructor(private service: MusicService) {}
 
   ngOnInit() {
     this.dataSource = new TableDataSource();
+    this.items = this.service.getAllMusic();
+    this.items.subscribe(item => {
+      console.log(item);
+    });
   }
 
   ngAfterViewInit() {
