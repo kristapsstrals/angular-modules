@@ -4,6 +4,7 @@ import { Breakpoints, BreakpointObserver } from "@angular/cdk/layout";
 import { map, shareReplay } from "rxjs/operators";
 import { AuthService } from "./services/auth.service";
 import { FormControl } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-admin",
@@ -27,7 +28,8 @@ export class AdminComponent {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -37,6 +39,7 @@ export class AdminComponent {
       if (!user) {
         console.log("Not logged in");
         this.loggedIn = false;
+        this.router.navigateByUrl("admin/login");
         return;
       }
 
@@ -44,10 +47,6 @@ export class AdminComponent {
       this.user = user;
       console.log(user);
     });
-  }
-
-  login() {
-    this.authService.login(this.email.value, this.password.value);
   }
 
   logout() {

@@ -29,12 +29,16 @@ export class AuthService {
     );
   }
 
-  async login(email: string, password: string) {
+  async login(
+    email: string,
+    password: string
+  ): Promise<firebaseAuth.UserCredential> {
     try {
-      let test = await this.auth.signInWithEmailAndPassword(email, password);
-    } catch {
+      return await this.auth.signInWithEmailAndPassword(email, password);
+    } catch (error) {
       console.error("error signing in");
       debugger;
+      throw error;
     }
   }
 

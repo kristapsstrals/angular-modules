@@ -1,1 +1,15 @@
-<p>login works!</p>
+<div class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email" type="email" [formControl]="email" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input
+      matInput
+      type="password"
+      placeholder="Password"
+      [formControl]="password"
+    />
+  </mat-form-field>
+  <button mat-raised-button (click)="login()">Login</button>
+</div>

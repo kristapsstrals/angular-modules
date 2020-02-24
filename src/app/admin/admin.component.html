@@ -3,21 +3,7 @@
 </ng-container>
 
 <ng-container *ngIf="!loggedIn; else elseTemplate">
-  <div class="example-form">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Email" type="email" [formControl]="email" />
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width">
-      <input
-        matInput
-        type="password"
-        placeholder="Password"
-        [formControl]="password"
-      />
-    </mat-form-field>
-  </div>
-  <button mat-raised-button (click)="login()">Login</button>
+  <router-outlet></router-outlet>
 </ng-container>
 <ng-template #elseTemplate>
   <mat-sidenav-container class="sidenav-container">

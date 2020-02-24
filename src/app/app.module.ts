@@ -10,6 +10,7 @@ import { NotFoundComponent } from "./pages/not-found/not-found.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MatButtonModule } from "@angular/material/button";
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
+    MatIconModule,
     ReactiveFormsModule
   ],
   providers: [],
