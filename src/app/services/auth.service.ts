@@ -3,15 +3,17 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { auth as firebaseAuth } from "firebase/app";
 import { map } from "rxjs/operators";
 import { Observable } from "rxjs";
+import User from "../models/user";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthService {
   auth: firebase.auth.Auth;
-  public user: Observable<any>;
+  public user: Observable<User>;
 
-  constructor(private afAuth: AngularFireAuth) {
+  constructor(private afAuth: AngularFireAuth, private router: Router) {
     this.auth = afAuth.auth;
 
     this.user = afAuth.authState.pipe(
@@ -29,21 +31,17 @@ export class AuthService {
     );
   }
 
-  async login(
-    email: string,
-    password: string
-  ): Promise<firebaseAuth.UserCredential> {
+  async login(email: string, password: string) {
     try {
-      await new Promise(resolve => setTimeout(resolve, 5000));
-      return await this.auth.signInWithEmailAndPassword(email, password);
+      await this.auth.signInWithEmailAndPassword(email, password);
+      this.router.navigateByUrl("admin");
     } catch (error) {
-      // console.error("error signing in");
-      // debugger;
       throw error;
     }
   }
 
   logout() {
     this.auth.signOut();
+    this.router.navigateByUrl("admin/login");
   }
 }

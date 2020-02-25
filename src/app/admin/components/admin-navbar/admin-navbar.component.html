@@ -1,2 +1,5 @@
-<span>choir-coal</span>
-<button mat-raised-button (click)="logout()">Logout</button>
+<span>Koris OGLE, ADMIN</span>
+<div>
+  <span class="user-name" *ngIf="user">{{ user.displayName }}</span>
+  <button mat-raised-button (click)="logout()">Logout</button>
+</div>

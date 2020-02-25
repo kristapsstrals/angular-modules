@@ -18,19 +18,15 @@ export class AdminComponent {
   email = new FormControl("");
   password = new FormControl("");
 
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.authService.user.subscribe(user => {
       this.loading = false;
 
       if (!user) {
-        console.log("Not logged in");
         this.loggedIn = false;
-        // this.router.navigateByUrl("admin/login");
+        this.router.navigateByUrl("admin/login");
         return;
       }
 
