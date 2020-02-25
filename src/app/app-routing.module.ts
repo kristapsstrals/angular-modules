@@ -4,11 +4,11 @@ import { LandingComponent } from "./pages/landing/landing.component";
 import { NotFoundComponent } from "./pages/not-found/not-found.component";
 
 const routes: Routes = [
-  { path: "", pathMatch: "full", component: LandingComponent },
   {
     path: "admin",
     loadChildren: () => import("./admin/admin.module").then(m => m.AdminModule)
   },
+  { path: "", pathMatch: "full", component: LandingComponent },
   { path: "**", component: NotFoundComponent }
 ];
 

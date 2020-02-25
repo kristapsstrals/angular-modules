@@ -3,9 +3,8 @@ import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTable } from "@angular/material/table";
 import { TableDataSource, TableItem } from "./table-datasource";
-import { AngularFirestore } from "@angular/fire/firestore";
 import { Observable } from "rxjs";
-import { MusicService } from "../../services/music.service";
+import { MusicService } from "../../../services/music.service";
 
 @Component({
   selector: "app-table",

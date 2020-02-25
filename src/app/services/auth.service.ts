@@ -34,10 +34,11 @@ export class AuthService {
     password: string
   ): Promise<firebaseAuth.UserCredential> {
     try {
+      await new Promise(resolve => setTimeout(resolve, 5000));
       return await this.auth.signInWithEmailAndPassword(email, password);
     } catch (error) {
-      console.error("error signing in");
-      debugger;
+      // console.error("error signing in");
+      // debugger;
       throw error;
     }
   }

@@ -10,31 +10,26 @@ import { environment } from "src/environments/environment";
 import { AdminRoutingModule } from "./admin-routing.module";
 import { AdminComponent } from "./admin.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
-import { MatGridListModule } from "@angular/material/grid-list";
-import { MatCardModule } from "@angular/material/card";
-import { MatMenuModule } from "@angular/material/menu";
-import { MatIconModule } from "@angular/material/icon";
-import { MatButtonModule } from "@angular/material/button";
 import { LayoutModule } from "@angular/cdk/layout";
-import { MatToolbarModule } from "@angular/material/toolbar";
-import { MatSidenavModule } from "@angular/material/sidenav";
-import { MatListModule } from "@angular/material/list";
 import { TableComponent } from "./pages/table/table.component";
-import { MatTableModule } from "@angular/material/table";
-import { MatPaginatorModule } from "@angular/material/paginator";
-import { MatSortModule } from "@angular/material/sort";
-import { MatInputModule } from "@angular/material/input";
-import { MusicService } from "./services/music.service";
-import { AuthService } from "./services/auth.service";
+import { MusicService } from "../services/music.service";
+import { AuthService } from "../services/auth.service";
 import { LoginComponent } from "./pages/login/login.component";
 import { ReactiveFormsModule } from "@angular/forms";
+import { MaterialModule } from "../material/material.module";
+import { ProfileComponent } from "./pages/profile/profile.component";
+import { SidenavComponent } from "./components/sidenav/sidenav.component";
+import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
 
 @NgModule({
   declarations: [
     AdminComponent,
     DashboardComponent,
     TableComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent,
+    SidenavComponent,
+    AdminNavbarComponent
   ],
   imports: [
     CommonModule,
@@ -45,19 +40,8 @@ import { ReactiveFormsModule } from "@angular/forms";
     AngularFireStorageModule,
     AdminRoutingModule,
     ReactiveFormsModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
     LayoutModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatInputModule
+    MaterialModule
   ],
   providers: [MusicService, AuthService]
 })

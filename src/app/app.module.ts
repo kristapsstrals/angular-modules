@@ -8,9 +8,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { LandingComponent } from "./pages/landing/landing.component";
 import { NotFoundComponent } from "./pages/not-found/not-found.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
-import { MatToolbarModule } from "@angular/material/toolbar";
-import { MatButtonModule } from "@angular/material/button";
-import { MatIconModule } from "@angular/material/icon";
+import { MaterialModule } from "./material/material.module";
+import { AuthService } from "./services/auth.service";
 
 @NgModule({
   declarations: [
@@ -23,12 +22,10 @@ import { MatIconModule } from "@angular/material/icon";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

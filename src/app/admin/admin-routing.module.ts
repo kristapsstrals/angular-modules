@@ -5,6 +5,7 @@ import { AdminComponent } from "./admin.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { TableComponent } from "./pages/table/table.component";
 import { LoginComponent } from "./pages/login/login.component";
+import { ProfileComponent } from "./pages/profile/profile.component";
 
 const routes: Routes = [
   {
@@ -13,7 +14,8 @@ const routes: Routes = [
     children: [
       { path: "", component: DashboardComponent },
       { path: "login", component: LoginComponent },
-      { path: "table", component: TableComponent }
+      { path: "table", component: TableComponent },
+      { path: "profile", component: ProfileComponent }
     ]
   }
 ];

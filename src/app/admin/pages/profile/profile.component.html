@@ -1,0 +1,7 @@
+<ng-container *ngIf="!user; else elseTemplate">
+  loading user...
+</ng-container>
+<ng-template #elseTemplate>
+  <p>Display Name: {{ user.displayName }}</p>
+  <p>Email: {{ user.email }}</p>
+</ng-template>
