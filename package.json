@@ -5,7 +5,6 @@
     "ng": "ng",
     "config": "node set-env.mjs",
     "start": "npm run config && ng serve",
-    "start:dev": "ng serve --configuration=dev",
     "build": "npm run config && ng build",
     "build:prod": "npm run config && ng build --prod",
     "test": "ng test",

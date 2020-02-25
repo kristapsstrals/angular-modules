@@ -6,11 +6,9 @@ import "colors";
 import dotenv from "dotenv";
 dotenv.config();
 
-console.log("test".red);
-
 // `environment.ts` file structure
 const envConfigFile = `export const environment = {
-  production: false,
+  production: "${process.env.PRODUCTION}",
   firebase: {
     apiKey: "${process.env.API_KEY}",
     authDomain: "${process.env.AUTH_DOMAIN}",
@@ -22,11 +20,6 @@ const envConfigFile = `export const environment = {
   }
 };`;
 
-console.log(
-  "The file `environment.ts` will be written with the following content: \n"
-    .magenta
-);
-console.log(envConfigFile.gray);
 writeFile(targetPath, envConfigFile, function(err) {
   if (err) {
     throw console.error(err);
