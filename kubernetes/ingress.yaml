@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: choir-coal-ui
+  namespace: choir-coal
+  annotations:
+    ingress.kubernetes.io/proxy-body-size: 500m
+    nginx.ingress.kubernetes.io/proxy-body-size: 500m
+spec:
+  rules:
+    - host: choir-coal.datahub.all
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: choir-coal-svc
+              servicePort: 80
